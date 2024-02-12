@@ -11,9 +11,11 @@ Welcome to Team UCI-OverRID's documentation!
    :caption: Contents:
    autodoc
 
-=============
+==================
 Software Repositories
-=============
-.. _a Fork of ardupilot which receives and utilizes OpenDroneID messages: https://github.com/uci-overRID/ardupilot/
-.. _a OpenDroneID recpetion code for ESP32: https://github.com/uci-overRID/RID
+==================
+`Fork of ardupilot which receives and utilizes OpenDroneID messages <https://github.com/uci-overRID/ardupilot/>`_
+-------
+`OpenDroneID recpetion code for ESP32 <https://github.com/uci-overRID/RID>`_
+-------
 
