@@ -118,10 +118,10 @@ cat > index.html <<EOF
 <html>
    <head>
       <title>helloWorld Docs</title>
-      <meta http-equiv = "refresh" content="0; url='/${REPO_NAME}/en/main/'" />
+      <meta http-equiv = "refresh" content="0; url='/en/main/'" />
    </head>
    <body>
-      <p>Please wait while you're redirected to our <a href="/${REPO_NAME}/en/main/">documentation</a>.</p>
+      <p>Please wait while you're redirected to our <a href="/en/main/">documentation</a>.</p>
    </body>
 </html>
 EOF

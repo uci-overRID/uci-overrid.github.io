@@ -3,19 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to helloWorld's documentation!
+Welcome to Team UCI-OverRID's documentation!
 ======================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
    autodoc
 
+=============
+Software Repositories
+=============
+`Fork of ardupilot which receives and utilizes OpenDroneID messages <https://github.com/uci-overRID/ardupilot/>`
+`OpenDronoe recpetion code for ESP32 <https://github.com/uci-overRID/RID>`
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
