@@ -9,7 +9,7 @@ Welcome to Team UCI-OverRID's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   autodoc
+   ardupilot
 
 ==================
 Software Repositories
