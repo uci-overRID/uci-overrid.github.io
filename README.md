@@ -185,8 +185,7 @@ Follow builing.md instructions
 8. ./waf copter
 
 
-###  \
-How to use (sitl)
+###  How to use (sitl)
 
 Find the ESP32 with 
 
