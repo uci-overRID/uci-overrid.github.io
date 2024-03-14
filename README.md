@@ -1,15 +1,6 @@
 
 # UCI remote ID detection manual
 
-
-## Rev 1.1
-
-
-## PJB 3/10/2024
-
-History 3/10/2024 clarified what new repos UCI are needed
-
-
 # Introduction
 
 UCI RID is a project to use RID output detected by a drone to avoid collision. Most drone will be broadcasting RID signals starting spring 2024.
