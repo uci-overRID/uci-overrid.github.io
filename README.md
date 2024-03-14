@@ -1,6 +1,3 @@
-# uci-overrid.github.io
-
-
 
 # UCI remote ID detection manual
 
@@ -173,7 +170,7 @@ UCI RID ESP32 receiver:
 
 1. Open VS Code.
 2. Clone repo (VS code) git clone [https://github.com/uci-overRID/RID](https://github.com/uci-overRID/RID)
-3. git checkout v2.1 (in terminal in VS code) NOTE only master works as of now. V2 has a bug in the include command on main.cpp, so DON’T do this step!
+3. git checkout v2.1 (in terminal in VS code) 
 4. git submodule update –init –recursive
 5. Click right arrow at bottom (build, upload) (Make sure plug into UART of ESP32 S3 Dev Board)
 
@@ -189,11 +186,12 @@ Follow builing.md instructions
 1. Clone UCI Ardupilot to your own directory
     1. git clone --recursive [https://github.com/uci-overRID/ardupilot](https://github.com/uci-overRID/ardupilot)
 2. cd ardupilot
-3. git checkout v2.1 (in terminal in VS code)
-4. git submodule init
-5. git submodule update --recursive
-6. ./waf configure --board sitl
-7. ./waf copter
+3. git checkout v2.2
+    (Note: V2.2 was functional on an armed drone on 3/13/2024. The OSD update lagged but the avoidance detection worked when antoher RID drone simulated came close, with geodesic altitude check.)
+5. git submodule init
+6. git submodule update --recursive
+7. ./waf configure --board sitl
+8. ./waf copter
 
 
 ###  \
@@ -219,132 +217,44 @@ param set avd_enable 1
 
 restart sitl
 
+#### Expected SITL behavior
+
+In MavProxy there are custom GCS messages sent rapidly from the similuated flight controller.
+
+On the OSD you will see "xy=..., z=..." as the distance to the nearest drone, if detected.
+
+Within the bubble, the OSD will display "failsafe action taken" or something like that.
+
+You can configure in the ADSB_Avoid parameters any RID avoid behavior you want in Mission Planner or QGroundControl.
+Our RID software uses these parameters for the avoidance algorithm.
 
 ### How to use (hardware)
 
+The hwdef.dat has ADSB_avoid enabled in this repo.
+Compile Ardupilot UCI version and flash to board as follows:
 
-## waf configure for your board with halasdb enabled (or change hwdef.dat for your board) \
-compile
+1. ./waf configure --board=MatekF405-TE
+2. ./waf copter
 
+Now in the build directory in ardupilot (buried somewhere deep) is the .apj file which is your custom firmware.
 
-## flash/upload apj to your board 
+3. You need to install stock arducopter onto the board first. Follow the ardupilot documentation for this.
+4. From either qgroundcontrol or mission planner, you can flash the custom .apj firmware to the board.
+5. For the RID receive ESP32, pinouts are: 17-RX, 18-TX.
+6. On the flight controller use TX1/RX1 pins.
 
+In the Mission Planner configuration, set SERIAL7_PROTOCOL to mavlink 2. Baud to 57600.
 
-## Commands from meeting in Prof Burke office (raw notes)
+The rest of the flight controller and drone configuration will be standard ardupilot.
 
-Find the right port for your ESP32 receiver:
+#### Expected behavior in the air
 
-/dev/ttyACM0
+The OSD will display nearest drone data (xy distance, z distance) if detected.
+Note the update rate is slow.
 
-Bus 001 Device 012: ID 303a:1001 Espressif USB JTAG/serial debug unit
+When an invader drone flies near, withing the bubble, the avoiding drone will perform its programmed action and also on OSD give notification of failsafe.
 
-for UCI esp32
+This is yet to be tested in the air.
 
-or
-
-ls /dev/serial/by-id
-
-usb-Espressif_USB_JTAG_serial_debug_unit_F4:12:FA:86:7E:AC-if00
-
-First, install the firmware on the ESP32 for UCI RID receiver. Use Visual Studio Code:
-
-UCI RID ESP32 receiver:
-
-
-
-6. Open VS Code.
-7. Clone repo (VS code) git clone [https://github.com/uci-overRID/RID](https://github.com/uci-overRID/RID)
-8. git checkout v2 (in terminal in VS code)
-9. Click right arrow at bottom (build, upload) (Make sure plug into UART of ESP32 S3 Dev Board)
-
-Note: I found_ _I could also flash it with the usb port.
-
-Standard RID
-
-1) Clone repo (VS code)
-
-2) Follow builing.md instructions:
-
-cd ~
-
-git clone https://github.com/ardupilot/arduremoteid
-
-cd arduremoteid/
-
-git submodule init
-
-git submodule update --recursive
-
-./scripts/install_build_env.sh
-
-./scripts/regen_headers.sh
-
-./scripts/add_libraries.sh
-
-Building with make and arduino-cli
-
-Step1: Use make to install ESP32 support
-
-cd RemoteIDModule
-
-make setup
-
-Step2: Use make to build
-
-cd RemoteIDModule
-
-make
-
-OR:
-
-make -j8 esp32s3dev
-
-Step3: Use make to upload
-
-cd RemoteIDModule
-
-(Plug into USB port)
-
-make upload
-
-UCI Ardupilot:
-
-for now make sure ssh keys on github properly configured
-
-e.g.
-
-ssh-add yourprivatekey
-
-(Reference build.md:
-
-https://github.com/ArduPilot/ardupilot/blob/master/BUILD.md)
-
-1) Clone UCI Ardupilot to your own directory
-
-2) git checkout v1 (in terminal in VS code)
-
-2) git submodule init
-
-git submodule update --recursive
-
-./waf configure --board sitl
-
-./waf copter
-
-NOW sitl is ready.
-
-Plug esp32 dev board into UART.
-
-Run sim_vehicle.py in your directory.
-
-Run sitl with --serial1="$PORT_TO_WHICH_YOU_ATTACHED_THE_ESP32" so that it can see the other drone.
-
-Example args to sim_vehicle.py `` -v ArduCopter --console --map -A --serial1=uart:$ODID_SCAN_DEV``.
-
-in my case:
-
-/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_eae59a1bbed2eb11a213c149e93fd3f1-if00-port0
-
-/home/peter/Documents/Code/ardupilot/Tools/autotest/sim_vehicle.py -v ArduCopter --console --map -A --serial1=uart:/dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_eae59a1bbed2eb11a213c149e93fd3f1-if00-port0
 
 
