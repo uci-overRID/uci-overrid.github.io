@@ -161,9 +161,10 @@ UCI RID ESP32 receiver:
 
 1. Open VS Code.
 2. Clone repo (VS code) git clone [https://github.com/uci-overRID/RID](https://github.com/uci-overRID/RID)
-3. git checkout v2.1 (in terminal in VS code) 
-4. git submodule update –init –recursive
-5. Click right arrow at bottom (build, upload) (Make sure plug into UART of ESP32 S3 Dev Board)
+3. git checkout v2.1 (in terminal in VS code)
+   Note if you want to use a specific branch, use instead the command git checkout my_branch
+5. git submodule update –init –recursive
+6. Click right arrow at bottom (build, upload) (Make sure plug into UART of ESP32 S3 Dev Board)
 
 Note: I found_ _I could also flash it with the usb port.
 
@@ -179,6 +180,8 @@ Follow builing.md instructions
 2. cd ardupilot
 3. git checkout v2.2
     (Note: V2.2 was functional on an armed drone on 3/13/2024. The OSD update lagged but the avoidance detection worked when antoher RID drone simulated came close, with geodesic altitude check.)
+      Note if you want to use a specific branch, use instead the command git checkout my_branch
+
 5. git submodule init
 6. git submodule update --recursive
 7. ./waf configure --board sitl
