@@ -177,13 +177,12 @@ Follow builing.md instructions
 
 1. Clone UCI Ardupilot to your own directory
     1. git clone --recursive [https://github.com/uci-overRID/ardupilot](https://github.com/uci-overRID/ardupilot)
-2. cd ardupilot
-3. git checkout v2.2
+2. cd ~/ardupilot
+3. git submodule update --init --recursive
+4. git checkout v2.2.1
     (Note: V2.2 was functional on an armed drone on 3/13/2024. The OSD update lagged but the avoidance detection worked when antoher RID drone simulated came close, with geodesic altitude check.)
       Note if you want to use a specific branch, use instead the command git checkout my_branch
-
-5. git submodule init
-6. git submodule update --recursive
+   Note: Have to run checkout AFTER submodule command or you will get the official ardupilot submodules, which is not what you want...
 7. ./waf configure --board sitl
 8. ./waf copter
 
