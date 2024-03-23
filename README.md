@@ -161,10 +161,10 @@ UCI RID ESP32 receiver:
 
 1. Open VS Code.
 2. Clone repo (VS code) git clone [https://github.com/uci-overRID/RID](https://github.com/uci-overRID/RID)
-3. git checkout v2.1 (in terminal in VS code)
+3. git submodule update –init –recursive
+4. git checkout v2.1 (in terminal in VS code)
    Note if you want to use a specific branch, use instead the command git checkout my_branch
-5. git submodule update –init –recursive
-6. Click right arrow at bottom (build, upload) (Make sure plug into UART of ESP32 S3 Dev Board)
+5. Click right arrow at bottom (build, upload) (Make sure plug into UART of ESP32 S3 Dev Board)
 
 Note: I found_ _I could also flash it with the usb port.
 
