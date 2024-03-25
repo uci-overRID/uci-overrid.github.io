@@ -176,7 +176,7 @@ Follow builing.md instructions
 ### 1) Clone UCI Ardupilot to your own directory
 bla bla bla
 ```
-git clone --recursive-submodules https://github.com/uci-overRID/ardupilot
+git clone --recurse-submodules https://github.com/uci-overRID/ardupilot
 ```
 bla bla bla
 ### 2) CD into ardupilot directory
