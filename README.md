@@ -173,13 +173,6 @@ Note: I found_ _I could also flash it with the usb port.
 
 Follow builing.md instructions
 
-### 2) SSH Pi to AWS for webcam  (on Pi terminal)
-SSH into AWS for webcam traffic (sets up a reverse ssh tunnel so if you log into localhost:8901 on desktop, it will take you to AWSIPADDRESS:8080, which has the webcam data):
-```
-ssh -R 8080:localhost:8090 -i "AWSKEY.pem" ubuntu@AWSIPADDRESS
-```
-so whatever AW sees at its port 8080 goes to Pi port 8090.
-
 ### 1) Clone UCI Ardupilot to your own directory
 bla bla bla
 ```
