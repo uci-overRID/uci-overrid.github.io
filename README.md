@@ -173,22 +173,52 @@ Note: I found_ _I could also flash it with the usb port.
 
 Follow builing.md instructions
 
+### 2) SSH Pi to AWS for webcam  (on Pi terminal)
+SSH into AWS for webcam traffic (sets up a reverse ssh tunnel so if you log into localhost:8901 on desktop, it will take you to AWSIPADDRESS:8080, which has the webcam data):
+```
+ssh -R 8080:localhost:8090 -i "AWSKEY.pem" ubuntu@AWSIPADDRESS
+```
+so whatever AW sees at its port 8080 goes to Pi port 8090.
 
-1. Clone UCI Ardupilot to your own directory
-    1. git clone --recursive-submodules [https://github.com/uci-overRID/ardupilot](https://github.com/uci-overRID/ardupilot)
-2. cd ~/ardupilot
-3. git submodule update --init --recursive
-4. Install toolchains needed:
-Tools/environment_install/install-prereqs-ubuntu.sh -y
-. ~/.profile
-sudo apt-get install python3-wxgtk4.0 -y --no-install-recommends
+### 1) Clone UCI Ardupilot to your own directory
+bla bla bla
+```
+git clone --recursive-submodules https://github.com/uci-overRID/ardupilot
+```
+bla bla bla
+### 2) CD into ardupilot directory
+CD into ardupilot directory
+```
+cd ~/ardupilot
+```
+bla bla bla
+### 3) Get submodules
+```
+git submodule update --init --recursive
+```
+### 4) Get tools
+```
+Tools/environment_install/install-prereqs-ubuntu.sh -y;
+. ~/.profile;
+sudo apt-get install python3-wxgtk4.0 -y --no-install-recommends;
 sudo apt install python-is-python3
-5. git checkout v2.2.1
-    (Note: V2.2 was functional on an armed drone on 3/13/2024. The OSD update lagged but the avoidance detection worked when antoher RID drone simulated came close, with geodesic altitude check.)
+```
+### 5) Get branch/release you want
+```
+git checkout v2.2.1
+```
+(Note: V2.2 was functional on an armed drone on 3/13/2024. The OSD update lagged but the avoidance detection worked when antoher RID drone simulated came close, with geodesic altitude check.)
       Note if you want to use a specific branch, use instead the command git checkout my_branch
    Note: Have to run checkout AFTER submodule command or you will get the official ardupilot submodules, which is not what you want...
-6. ./waf configure --board sitl
-7. ./waf copter
+### 6) Configure build with waf
+```
+./waf configure --board sitl
+```
+### 6) Build
+```
+./waf copter
+```
+
 
 
 ###  How to use (sitl)
