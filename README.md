@@ -174,9 +174,8 @@ Note: I found_ _I could also flash it with the usb port.
 Follow builing.md instructions
 
 
-
 1. Clone UCI Ardupilot to your own directory
-    1. git clone --recursive [https://github.com/uci-overRID/ardupilot](https://github.com/uci-overRID/ardupilot)
+    1. git clone --recursive-submodules [https://github.com/uci-overRID/ardupilot](https://github.com/uci-overRID/ardupilot)
 2. cd ~/ardupilot
 3. git submodule update --init --recursive
 4. Install toolchains needed:
