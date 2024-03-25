@@ -174,17 +174,14 @@ Note: I found_ _I could also flash it with the usb port.
 Follow builing.md instructions
 
 ### 1) Clone UCI Ardupilot to your own directory
-bla bla bla
 ```
 git clone --recurse-submodules https://github.com/uci-overRID/ardupilot
 ```
-bla bla bla
 ### 2) CD into ardupilot directory
 CD into ardupilot directory
 ```
 cd ~/ardupilot
 ```
-bla bla bla
 ### 3) Get branch/release you want
 ```
 git checkout v2.2.1
