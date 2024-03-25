@@ -179,12 +179,17 @@ Follow builing.md instructions
     1. git clone --recursive [https://github.com/uci-overRID/ardupilot](https://github.com/uci-overRID/ardupilot)
 2. cd ~/ardupilot
 3. git submodule update --init --recursive
-4. git checkout v2.2.1
+4. Install toolchains needed:
+Tools/environment_install/install-prereqs-ubuntu.sh -y
+. ~/.profile
+sudo apt-get install python3-wxgtk4.0 -y --no-install-recommends
+sudo apt install python-is-python3
+5. git checkout v2.2.1
     (Note: V2.2 was functional on an armed drone on 3/13/2024. The OSD update lagged but the avoidance detection worked when antoher RID drone simulated came close, with geodesic altitude check.)
       Note if you want to use a specific branch, use instead the command git checkout my_branch
    Note: Have to run checkout AFTER submodule command or you will get the official ardupilot submodules, which is not what you want...
-7. ./waf configure --board sitl
-8. ./waf copter
+6. ./waf configure --board sitl
+7. ./waf copter
 
 
 ###  How to use (sitl)
