@@ -273,3 +273,11 @@ This is yet to be tested in the air.
 
 
 
+#### A note on building on a dirty pc
+
+If you have installed many different versions of Ardupilot, here is how to clean up your pc:
+Delete all ardupilot directories.
+Make sure to empty trash!
+Open .bashrc, delete anything with ardupilot in it.
+Close the terminal, open a new one.
+Now start from scratch with the instructions above.
