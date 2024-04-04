@@ -55,9 +55,9 @@ pip install esptool
  python3 -m pip install --upgrade pip
  pip install esptool
 ```
-and
+and, hold down boot before connect. If USB , it is typically acm0; if you use the comm port, it is usually usb0 in the /dev/tty.... argument. Use the bin file name and path of your local machine.
 ```
-esptool.py -p /dev/ttyUSB0 -b 460800 --before default_reset --after hard_reset --chip esp32-s3 write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x1000 '/home/peter/Downloads/ArduRemoteID-ESP32S3_DEV.bin'
+esptool.py -p /dev/ttyACM0 -b 1152000 --before default_reset --after hard_reset --chip esp32-s3 write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x0000 '/home/peter/Downloads/ArduRemoteID-ESP32S3_DEV.bin'
 ```
 
 When you flash it, hold the boot button down, and then plug the cable into the USB port on the board. Follow the directions on github.
