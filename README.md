@@ -49,6 +49,17 @@ Flash the ESP32 with the “stock” opendroneid TX firmware, available at githu
 
 [https://github.com/ArduPilot/ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID)
 
+In linux I use these commands after downloading the bin file:
+```
+pip install esptool
+ python3 -m pip install --upgrade pip
+ pip install esptool
+```
+and
+```
+esptool.py -p /dev/ttyUSB0 -b 460800 --before default_reset --after hard_reset --chip esp32-s3 write_flash --flash_mode dio --flash_size detect --flash_freq 40m 0x1000 '/home/peter/Downloads/ArduRemoteID-ESP32S3_DEV.bin'
+```
+
 When you flash it, hold the boot button down, and then plug the cable into the USB port on the board. Follow the directions on github.
 
 Once flashed, plug into PC to run SITL, using the UART connector on the board.
