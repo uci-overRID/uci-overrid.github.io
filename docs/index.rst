@@ -10,6 +10,7 @@ Welcome to Team UCI-OverRID's documentation!
    :caption: Contents:
 
    ardupilot
+   opendroneid_receiver
 
 ==================
 Software Repositories
